@@ -7,7 +7,7 @@ require 'data_mapper'
 require 'pry'
 
 
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/blog.db")
+DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/page.db")
 
 class Page
   include DataMapper::Resource

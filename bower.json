@@ -1,0 +1,19 @@
+{
+  "name": "madison",
+  "version": "0.0.1",
+  "authors": [
+    "Devin Barham <barhamd@gmail.com>"
+  ],
+  "description": "An app to give my sister a place to express herself.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "EpicEditor": "~0.2.3"
+  }
+}
