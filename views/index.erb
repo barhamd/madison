@@ -1,5 +1,6 @@
 <%= @html %>
 
-<textarea id="myTextarea">
-  <%= @html %>
-</textarea>
+<form action='/' method='post'>
+  <textarea id="myTextarea" name='html'><%= @html %></textarea>
+  <input type='submit' value='submit' />
+</form>

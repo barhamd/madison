@@ -36,6 +36,6 @@ post '/' do
   if @page.save
     redirect to '/'
   else
-    redirect to '/edit'
+    redirect to '/'
   end
 end
