@@ -1,20 +1,26 @@
-h1 {
-  text-align: center;
-}
-
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .editor-container {
   position: fixed;
   width: 100%;
   bottom: 0;
 }
+
+.editor .minimize {
+  border-radius: 50%;
+  color: #00B21A;
+  top: 9px;
+  right: 16px;
+}
+
 .editor {
+  -webkit-box-shadow: 3px 1px 22px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 1px 22px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 1px 22px 0px rgba(0,0,0,0.75);
+  border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
   width: 75%;
+}
+
+.save-button {
+  border-radius: 4px 0 0 0;
 }
