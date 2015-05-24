@@ -4,11 +4,19 @@
   bottom: 0;
 }
 
-.editor .minimize {
+.editor .maximize {
   border-radius: 50%;
   color: #00B21A;
   top: 9px;
-  right: 16px;
+  right: 18px;
+}
+
+.editor .minimize {
+  border-radius: 50%;
+  color: #fdc041;
+  top: 9px;
+  right: 18px;
+  margin-right: 3px;
 }
 
 .editor {
