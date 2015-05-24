@@ -1,4 +1,5 @@
 var editor = CodeMirror.fromTextArea(myTextarea, {
   lineNumbers: true,
-  mode:        "htmlembedded"
+  mode:        "htmlembedded",
+  theme:       "monokai"
 });

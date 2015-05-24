@@ -1,6 +1,11 @@
 <%= @html %>
 
-<form action='/' method='post'>
-  <textarea id="myTextarea" name='html'><%= @html %></textarea>
-  <input type='submit' value='submit' />
-</form>
+<div class='editor-container'>
+  <div id='editor' class='editor'>
+    <form action='/' method='post'>
+      <button type="submit" class="btn btn-default">
+        <span class="glyphicon glyphicon-floppy-save"></span> Save</button>
+      <textarea id="myTextarea" name='html'><%= @html %></textarea>
+    </form>
+  </div>
+</div>

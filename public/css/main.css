@@ -7,3 +7,14 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
+
+.editor-container {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+.editor {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
