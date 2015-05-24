@@ -2,20 +2,22 @@
   position: fixed;
   width: 100%;
   bottom: 0;
+  z-index: 0;
+}
+
+.editor .min-max {
+  border-radius: 50%;
+  top: 9px;
+  right: 18px;
+  cursor: pointer;
 }
 
 .editor .maximize {
-  border-radius: 50%;
   color: #00B21A;
-  top: 9px;
-  right: 18px;
 }
 
 .editor .minimize {
-  border-radius: 50%;
   color: #fdc041;
-  top: 9px;
-  right: 18px;
   margin-right: 3px;
 }
 
@@ -27,8 +29,13 @@
   margin-left: auto;
   margin-right: auto;
   width: 75%;
+  background-color: #FFF;
 }
 
 .save-button {
   border-radius: 4px 0 0 0;
+}
+
+.minimized {
+  bottom: -300px;
 }
