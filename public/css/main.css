@@ -37,5 +37,6 @@
 }
 
 .minimized {
+  animation-duration: 3s;
   bottom: -300px;
 }

@@ -5,9 +5,9 @@ var editor = CodeMirror.fromTextArea(myTextarea, {
 });
 
 $('#minimize').click(function (e) {
-  $(this).closest('.editor-container').addClass('minimized');
+  $(this).closest('.editor-container').animate({bottom: -300});
 });
 
 $('#maximize').click(function () {
-  $(this).closest('.editor-container').removeClass('minimized');
+  $(this).closest('.editor-container').animate({bottom: 0});
 });
