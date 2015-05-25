@@ -8,7 +8,7 @@ require 'pry'
 
 require_relative 'models/init'
 
-class App < Sinatra::Base
+class MyApp < Sinatra::Base
 
   get '/' do
     @html = Page.last.html
