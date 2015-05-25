@@ -1,9 +1,46 @@
-h1 {
-  text-align: center;
+.editor-container {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 0;
 }
 
-img {
-  display: block;
+.editor .min-max {
+  border-radius: 50%;
+  top: 9px;
+  right: 18px;
+  cursor: pointer;
+}
+
+.editor .maximize {
+  color: #00B21A;
+}
+
+.editor .minimize {
+  color: #fdc041;
+  margin-right: 3px;
+}
+
+.editor {
+  -webkit-box-shadow: 3px 1px 22px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 1px 22px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 1px 22px 0px rgba(0,0,0,0.75);
+  border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
+  width: 75%;
+  background-color: #FFF;
+}
+
+.save-button {
+  border-radius: 4px 0 0 0;
+}
+
+.minimized {
+  animation-duration: 3s;
+  bottom: -300px;
+}
+
+.page {
+  max-width: 740px;
 }

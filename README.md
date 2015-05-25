@@ -1,3 +1,3 @@
-#Sinatra Boilerplate
+# I promised my little sister a website.
 
-I'm always finding myself needing a quick webserver setup. Now I don't need to keep creating it.
+This is that website.
