@@ -65,17 +65,21 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    rack (1.6.0)
+    rack (1.6.1)
     rack-protection (1.5.3)
       rack
-    sinatra (1.4.5)
+    sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
-      tilt (~> 1.3, >= 1.3.4)
+      tilt (>= 1.3, < 3)
+    sinatra-flash (0.3.0)
+      sinatra (>= 1.0.0)
     slop (3.6.0)
     stringex (1.5.1)
-    tilt (1.4.1)
+    tilt (2.0.1)
     uuidtools (2.1.5)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -86,3 +90,5 @@ DEPENDENCIES
   haml
   pry
   sinatra
+  sinatra-flash
+  warden (= 1.2.3)

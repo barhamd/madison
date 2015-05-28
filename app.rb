@@ -2,9 +2,28 @@
 
 require_relative 'models/init'
 
+Warden::Strategies.add(:password) do
+  def valid?
+    params['user'] && params['user']['username'] && params['user']['password']
+  end
+
+  def authenticate!
+    user = User.first(username: params['user']['username'])
+
+    if user.nil?
+      throw(:warden, message: "The username you entered does not exist.")
+    elsif user.authenticate(params['user']['password'])
+      success!(user)
+    else
+      throw(:warden, message: "The username and password do not match.")
+    end
+  end
+end
+
 class MyApp < Sinatra::Base
-  enable :session
+  enable :sessions
   register Sinatra::Flash
+  set :session_secret, 'super'
 
   use Warden::Manager do |config|
     config.serialize_into_session{ |user| user.id }
@@ -19,24 +38,6 @@ class MyApp < Sinatra::Base
 
   Warden::Manager.before_failure do |env, opts|
     env['REQUEST_METHOD'] = 'POST'
-  end
-
-  Warden::Strategies.add(:password) do
-    def valid?
-      params['user']['username'] && params['user']['password']
-    end
-
-    def authenticate!
-      user = User.first(username: params['user']['username'])
-
-      if user.nil?
-        fail!("The username you entered does not exist.")
-      elsif user.authenticate(params['user']['password'])
-        success!(user)
-      else
-        fail!("Could not log in")
-      end
-    end
   end
 
   get '/' do
@@ -56,5 +57,41 @@ class MyApp < Sinatra::Base
     else
       redirect to '/'
     end
+  end
+
+  get '/auth/login' do
+    erb :login
+  end
+
+  post '/auth/login' do
+    env['warden'].authenticate!
+
+    flash[:success] = env['warden'].message || "You've logged in."
+
+    if session[:return_to].nil?
+      redirect '/'
+    else
+      redirect session[:return_to]
+    end
+  end
+
+  get '/auth/logout' do
+    env['warden'].raw_session.inspect
+    env['warden'].logout
+    flash[:success] = 'Sucessfully logged out'
+    redirect '/'
+  end
+
+  post '/auth/unauthenticated' do
+    session[:return_to] = env['warden.options'][:attempted_path]
+    puts env['warden.options'][:attempted_path]
+    flash[:error] = env['warden'].message || "You must log in"
+    redirect '/auth/login'
+  end
+
+  get '/protected' do
+    env['warden'].authenticate!
+    @current_user = env['warden'].user
+    erb :protected
   end
 end
