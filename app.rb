@@ -31,7 +31,7 @@ class MyApp < Sinatra::Base
 
     config.scope_defaults :default,
       strategies: [:password],
-      action: 'auth/unauthenticated'
+      action: 'unauthenticated'
 
     config.failure_app = self
   end
@@ -42,12 +42,8 @@ class MyApp < Sinatra::Base
 
   get '/' do
     @html = Page.last.html
+    @current_user = env['warden'].user
     erb :index
-  end
-
-  get '/edit' do
-    @page = Page.last
-    erb :edit
   end
 
   post '/' do
@@ -59,11 +55,11 @@ class MyApp < Sinatra::Base
     end
   end
 
-  get '/auth/login' do
+  get '/login' do
     erb :login
   end
 
-  post '/auth/login' do
+  post '/login' do
     env['warden'].authenticate!
 
     flash[:success] = env['warden'].message || "You've logged in."
@@ -75,23 +71,18 @@ class MyApp < Sinatra::Base
     end
   end
 
-  get '/auth/logout' do
+  get '/logout' do
     env['warden'].raw_session.inspect
     env['warden'].logout
     flash[:success] = 'Sucessfully logged out'
     redirect '/'
   end
 
-  post '/auth/unauthenticated' do
+  post '/unauthenticated' do
     session[:return_to] = env['warden.options'][:attempted_path]
     puts env['warden.options'][:attempted_path]
     flash[:error] = env['warden'].message || "You must log in"
-    redirect '/auth/login'
+    redirect '/login'
   end
 
-  get '/protected' do
-    env['warden'].authenticate!
-    @current_user = env['warden'].user
-    erb :protected
-  end
 end
