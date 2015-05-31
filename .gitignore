@@ -1,3 +1,13 @@
+/*RVM*/
+.ruby-gemset
+
+/*Package managers*/
 bower_components
 node_modules
+
+/*Database*/
 *.db
+
+/*Unicorn*/
+/tmp
+/log
