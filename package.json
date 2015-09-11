@@ -7,7 +7,6 @@
     "gulp-rename": "~1.2.2",
     "gulp-uglify": "~1.4.1",
     "gulp-filter": "~3.0.1",
-    "main-bower-files": "~2.9.0",
-    "gulp-debug": "~2.1.0"
+    "main-bower-files": "~2.9.0"
   }
 }
