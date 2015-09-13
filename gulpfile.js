@@ -2,11 +2,12 @@
 var gulp = require('gulp');
 
 // Include plugins
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var filter = require('gulp-filter');
-var minifyCss = require('gulp-minify-css');
+var sass           = require('gulp-ruby-sass');
+var concat         = require('gulp-concat');
+var uglify         = require('gulp-uglify');
+var rename         = require('gulp-rename');
+var filter         = require('gulp-filter');
+var minifyCss      = require('gulp-minify-css');
 var mainBowerFiles = require('main-bower-files');
 
 // Define default destination folder
@@ -33,5 +34,12 @@ gulp.task('stylesheets', function() {
     .pipe(gulp.dest(dest + 'css'));
 });
 
+// Concatenate Sass
+gulp.task('sass', function() {
+  var sassFiles = 'assets/stylesheets/application.scss'
+  return sass(sassFiles, {style: 'compressed', emitCompileError: true})
+    .pipe(gulp.dest(dest + 'scss'));
+});
+
 // Default Task
-gulp.task('default', ['scripts', 'stylesheets']);
+gulp.task('default', ['scripts', 'stylesheets', 'sass']);
