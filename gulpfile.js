@@ -6,6 +6,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var filter = require('gulp-filter');
+var minifyCss = require('gulp-minify-css');
 var mainBowerFiles = require('main-bower-files');
 
 // Define default destination folder
@@ -22,5 +23,15 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest(dest + 'js'));
 });
 
+// Concatenate CSS
+gulp.task('stylesheets', function() {
+  var cssFiles = ['assets/stylesheets/*.css']
+  return gulp.src(mainBowerFiles().concat(cssFiles))
+    .pipe(filter('*.css'))
+    .pipe(concat('main.css'))
+    .pipe(minifyCss())
+    .pipe(gulp.dest(dest + 'css'));
+});
+
 // Default Task
-gulp.task('default', ['scripts']);
+gulp.task('default', ['scripts', 'stylesheets']);

@@ -8,6 +8,8 @@
   "overrides": {
     "codemirror": {
       "main": [
+        "lib/codemirror.css",
+        "theme/monokai.css",
         "lib/codemirror.js",
         "mode/htmlembedded/htmlembedded.js",
         "mode/htmlmixed/htmlmixed.js",
