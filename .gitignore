@@ -11,3 +11,7 @@ node_modules
 /*Unicorn*/
 /tmp
 /log
+
+/*Sass*/
+.sass-cache
+.sass-cache/*
