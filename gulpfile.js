@@ -2,6 +2,7 @@
 var gulp = require('gulp');
 
 // Include plugins
+var es             = require('event-stream');
 var sass           = require('gulp-ruby-sass');
 var concat         = require('gulp-concat');
 var uglify         = require('gulp-uglify');
@@ -24,22 +25,17 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest(dest + 'js'));
 });
 
-// Concatenate CSS
+// Concatenate All Stylesheets
 gulp.task('stylesheets', function() {
-  var cssFiles = ['assets/stylesheets/*.css']
-  return gulp.src(mainBowerFiles().concat(cssFiles))
-    .pipe(filter('*.css'))
-    .pipe(concat('main.css'))
-    .pipe(minifyCss())
-    .pipe(gulp.dest(dest + 'css'));
-});
+  var cssFiles = gulp.src(mainBowerFiles()).pipe(filter('*.css'))
+  var scssFiles = sass('assets/stylesheets/application.scss', {style: 'compressed', emitCompileError: true})
 
-// Concatenate Sass
-gulp.task('sass', function() {
-  var sassFiles = 'assets/stylesheets/application.scss'
-  return sass(sassFiles, {style: 'compressed', emitCompileError: true})
-    .pipe(gulp.dest(dest + 'scss'));
+  return es.concat(cssFiles, scssFiles)
+  .pipe(concat('main.css'))
+  .pipe(rename({suffix: '.min'}))
+  .pipe(minifyCss())
+  .pipe(gulp.dest(dest + 'css'));
 });
 
 // Default Task
-gulp.task('default', ['scripts', 'stylesheets', 'sass']);
+gulp.task('default', ['scripts', 'stylesheets']);
