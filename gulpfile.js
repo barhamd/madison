@@ -37,5 +37,10 @@ gulp.task('stylesheets', function() {
   .pipe(gulp.dest(dest + 'css'));
 });
 
+gulp.task('bootstrap-icons', function() { 
+  return gulp.src('bower_components/bootstrap-sass/assets/fonts/bootstrap/*.*') 
+    .pipe(gulp.dest('./public/fonts/bootstrap')); 
+});
+
 // Default Task
-gulp.task('default', ['scripts', 'stylesheets']);
+gulp.task('default', ['scripts', 'stylesheets', 'bootstrap-icons']);
