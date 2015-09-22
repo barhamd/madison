@@ -37,6 +37,7 @@ gulp.task('stylesheets', function() {
   .pipe(gulp.dest(dest + 'css'));
 });
 
+// Bootstrap Icons. Should probably do this with sass.
 gulp.task('bootstrap-icons', function() { 
   return gulp.src('bower_components/bootstrap-sass/assets/fonts/bootstrap/*.*') 
     .pipe(gulp.dest('./public/fonts/bootstrap')); 
