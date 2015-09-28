@@ -3,10 +3,12 @@
   <head>
     <title>Hello</title>
     <link href="/css/main.min.css" rel="stylesheet" type="text/css"></link>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <% if flash[:success] %>
-    <div style="color:green;">
+    <div class='alert alert-success alert-dismissable'>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <%= flash[:success] %>
     </div>
     <% end %>
