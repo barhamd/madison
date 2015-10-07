@@ -43,5 +43,10 @@ gulp.task('bootstrap-icons', function() { 
     .pipe(gulp.dest('./public/fonts/bootstrap')); 
 });
 
+gulp.task('watch', function() {
+  gulp.watch('assets/javascripts/*.js', ['scripts']);
+  gulp.watch('assets/stylesheets/*.scss', ['stylesheets']);
+});
+
 // Default Task
-gulp.task('default', ['scripts', 'stylesheets', 'bootstrap-icons']);
+gulp.task('default', ['scripts', 'stylesheets', 'bootstrap-icons', 'watch']);
