@@ -1,4 +1,11 @@
 @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "editor";
 @import "index";
-@import "header";
+@import "jumbotron";
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
