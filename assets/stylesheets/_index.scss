@@ -1,6 +1,6 @@
+.container {
+  max-width: 730px;
+}
 .content {
-  @extend .col-lg-8;
-  @extend .col-lg-offset-2;
-  @extend .col-md-8;
-  @extend .col-md-offset-2;
+  padding: 0 15px;
 }
