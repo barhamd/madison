@@ -19,8 +19,12 @@
     color: #DDD6F3;
     text-shadow: #333 1px 1px 3px;
   }
+  .title {
+  }
   img {
     @extend .img-circle;
+    @extend .col-sm-3;
+    @extend .col-sm-9;
     max-width: 150px;
     background: none;
     margin-top: 35px;
